@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="my">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f8e9e8" />
+  <meta name="description" content="A little birthday surprise made with love." />
+  <title>For Ko Ko ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+    <main id="app" class="app" aria-live="polite">
+
+      <!-- 01: CODE -->
+      <section class="screen active" data-screen="code">
+        <div class="sparkles" aria-hidden="true"></div>
+        <button class="sound-btn" id="soundBtn" aria-label="Toggle sounds">♪</button>
+        <div class="code-card glass-card">
+          <div class="tiny-kicker">a little secret ♡</div>
+          <h1>Enter Code</h1>
+          <p class="hint">ကိုကို့အတွက် surprise လေးကို<br>ဖွင့်ဖို့ code လေးထည့်ပေးနော်</p>
+          <div class="pin-dots" id="pinDots" aria-label="Entered code"></div>
+          <div class="keypad" id="keypad">
+            <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+            <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+            <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+            <button data-key="clear" class="small-key">CLR</button><button data-key="0">0</button><button
+              data-key="delete" class="small-key">DEL</button>
+          </div>
+          <p class="mini-note">hint: 4 little numbers ♡</p>
+        </div>
+      </section>
+
+      <!-- 02: WRONG CODE MODAL -->
+      <div class="modal-backdrop" id="wrongModal" hidden>
+        <div class="modal-card cute-modal">
+          <div class="modal-face">🥺</div>
+          <h2>Wrong Passcode!</h2>
+          <p>code လေးမှားနေပြီနော်...<br>ထပ်စမ်းကြည့်ပါဦး ♡</p>
+          <button class="primary-btn" id="retryBtn">Retry</button>
+        </div>
+      </div>
+
+      <!-- 03: INTRO -->
+      <section class="screen" data-screen="intro">
+        <div class="floating-heart heart-a">♡</div>
+        <div class="floating-heart heart-b">♡</div>
+        <div class="intro-content">
+          <div class="eyebrow">for my favorite person</div>
+          <h1 class="big-title">Happy Birthday</h1>
+          <div class="gold-line"><span>✦</span></div>
+          <p class="intro-copy">ကိုကို့အတွက် ထက်မြက်ရဲ့<br><strong>မွေးနေ့လက်ဆောင်လေး</strong> 🎁</p>
+          <div class="hero-heart" aria-hidden="true"><span>♡</span></div>
+          <button class="primary-btn" data-next="wish">ဆက်ကြည့်မယ် ♡</button>
+        </div>
+      </section>
+
+      <!-- 04/05: CAKE -->
+      <section class="screen" data-screen="wish">
+        <div class="screen-top"><span class="side-line"></span><span class="tiny-label">one little wish</span><span
+            class="side-line"></span></div>
+        <div class="wish-content">
+          <h1>Make a Wish</h1>
+          <p>ကိုကိုရေ မျက်စိလေးမှိတ်ပြီး ဆုတောင်းလိုက်နော် ♡</p>
+          <div class="wish-sub">HAPPY BIRTHDAY ပါ ကိုကို 🎂</div>
+
+          <div class="cake-stage" id="cakeStage" aria-label="Birthday cake">
+            <div class="cake-sparkle sparkle-one">✦</div>
+            <div class="cake-sparkle sparkle-two">✧</div>
+            <div class="cake-sparkle sparkle-three">♡</div>
+            <div class="cake-glow"></div>
+
+            <div class="cake-layer layer-1">
+              <span class="cake-frosting frosting-one"></span>
+              <span class="cake-berry berry-one">●</span>
+              <span class="cake-berry berry-two">●</span>
+            </div>
+            <div class="cake-layer layer-2">
+              <span class="cake-frosting frosting-two"></span>
+              <span class="cake-dot dot-one">•</span>
+              <span class="cake-dot dot-two">•</span>
+              <span class="cake-dot dot-three">•</span>
+            </div>
+            <div class="cake-layer layer-3">
+              <span class="cake-frosting frosting-three"></span>
+              <span class="cake-flower">✿</span>
+              <span class="cake-flower flower-two">✿</span>
+            </div>
+            <div class="cake-layer layer-4">
+              <span class="cake-frosting frosting-four"></span>
+              <span class="cake-cherry">●</span>
+            </div>
+
+            <div class="candle-wrap" id="candle" role="button" tabindex="0" aria-label="Blow out the candle">
+              <div class="flame"><i></i></div>
+              <div class="candle-stick"></div>
+              <span class="candle-bow">♡</span>
+            </div>
+          </div>
+
+          <p class="candle-hint" id="candleHint">ဖယောင်းတိုင်လေးကို နှိပ်ပြီး မီးမှုတ်ပေးနော် 🕯️</p>
+          <div class="wish-message" id="wishMessage">ဆုတောင်းလေးတွေ ပြည့်ဝပါစေ ♡✨</div>
+          <button class="primary-btn next-wish" id="wishNext" hidden>ဆက်သွားမယ် ♡</button>
+        </div>
+      </section>
+
+      <!-- 06: HOLD HEART -->
+      <section class="screen" data-screen="hold">
+        <div class="hold-content">
+          <div class="tiny-label">just one more little thing...</div>
+          <h1>အသဲပုံလေးကို ဖိထားပေးနော်</h1>
+          <p>ခဏလေးပဲနော် ♡</p>
+          <button class="hold-heart" id="holdHeart" aria-label="Press and hold the heart">
+            <span>♡</span>
+            <div class="hold-ring"><svg viewBox="0 0 100 100">
+                <circle class="ring-bg" cx="50" cy="50" r="46"></circle>
+                <circle class="ring-progress" id="ringProgress" cx="50" cy="50" r="46"></circle>
+              </svg></div>
+          </button>
+          <div class="hold-percent" id="holdPercent">0%</div>
+          <p class="hold-small">ဖိထားပြီး အဝိုင်းလေးပြည့်အောင် စောင့်ပေးနော်</p>
+        </div>
+      </section>
+
+      <!-- 07: GIFT -->
+      <section class="screen" data-screen="gift">
+        <div class="gift-content">
+          <div class="tiny-label">a little gift for you</div>
+          <h1>Gift for you</h1>
+          <p>ဘယ်ဟာကို အရင်ဖွင့်ချင်လဲ ကိုကို? ♡</p>
+          <div class="gift-options">
+            <button class="gift-option letter-option" data-open="letter">
+              <span class="gift-icon icon-envelope" aria-hidden="true">
+                <svg viewBox="0 0 100 100">
+                  <rect x="16" y="25" width="68" height="50" rx="14"></rect>
+                  <path d="M20 31 50 57 80 31"></path>
+                  <path d="M20 70 42 50M80 70 58 50"></path>
+                  <path class="icon-heart" d="M72 18c-4-7-15-4-15 4 0-8-11-11-15-4-5 8 5 14 15 21 10-7 20-13 15-21Z">
+                  </path>
+                </svg>
+              </span>
+              <span>Letter</span>
+              <small>စာလေးတစ်စောင်</small>
+            </button>
+            <button class="gift-option memories-option" data-open="memories">
+              <span class="gift-icon icon-polaroid" aria-hidden="true">
+                <svg viewBox="0 0 100 100">
+                  <rect x="19" y="15" width="62" height="70" rx="10"></rect>
+                  <rect x="28" y="25" width="44" height="36" rx="6"></rect>
+                  <circle cx="42" cy="38" r="5"></circle>
+                  <path d="M31 56 44 45 53 53 60 47 70 57"></path>
+                  <path class="icon-heart" d="M57 72c-4-6-13-3-13 4 0-7-9-10-13-4-4 7 4 12 13 18 9-6 17-11 13-18Z">
+                  </path>
+                </svg>
+              </span>
+              <span>Memories</span>
+              <small>တို့နှစ်ယောက်ရဲ့အမှတ်တရ</small>
+            </button>
+          </div>
+          <div class="gift-footer">made with lots of love ♡</div>
+        </div>
+      </section>
+
+      <!-- 08: LETTER -->
+      <section class="screen overlay-screen" data-screen="letter">
+        <div class="letter-paper">
+          <button class="close-btn" data-back="gift" aria-label="Close">×</button>
+          <div class="paper-corner corner-one"></div>
+          <div class="paper-corner corner-two"></div>
+          <div class="letter-kicker">To my little love ♡</div>
+          <h1>Happy Birthday ပါအချစ်ရေ 🎂💗</h1>
+          <div class="letter-body">
+            <p>ဒီနေ့ကျရောက်တဲ့ မွေးနေ့ကစပြီး စိတ်ချမ်းသာ ကိုယ်ကျန်းမာပါစေ။ လိုအင်ဆန္ဒတွေ ပြည့်ပြီး
+              လုပ်ချင်တဲ့စီးပွားရေးတွေလည်း အမြန်ဆုံးလုပ်ကိုင်နိုင်ပါစေ 🥳</p>
+            <p>ပိုက်ဆံတွေ ဒီထက်မက များကြီးရှာနိုင်ပြီး ထက်မြက်ကိုလည်း ဒီထက်မက များကြီးအဆုံးမဲ့ ပိုချစ်နိုင်ပါစေရှင် 👀🫶
+            </p>
+            <p>နောက်နှစ်တွေအများကြီးအများကြီးထိ အတူတူပျော်ရွှင် အမှတ်တရတွေ ဖန်တီးသွားကြမယ်နော် ကိုကို 💕</p>
+          </div>
+          <div class="letter-sign">with all my love ♡</div>
+          <button class="dark-btn" data-back="gift">ပြန်သွားမယ်</button>
+        </div>
+      </section>
+
+      <!-- 09: MEMORIES -->
+      <section class="screen overlay-screen" data-screen="memories">
+        <div class="memories-page">
+          <button class="close-btn" data-back="gift" aria-label="Close">×</button>
+          <div class="memories-heading">
+            <div class="tiny-label">little pieces of us</div>
+            <h1>Memories ♡</h1>
+            <p>တို့နှစ်ယောက်အတူရှိခဲ့တဲ့ အမှတ်တရလေးတွေ</p>
+          </div>
+
+          <div class="memory-timeline">
+            <article class="memory-card">
+              <div class="photo-frame">
+                <img src="images/memories/memory-03.jpeg" alt="A sweet birthday memory" loading="lazy">
+                <span class="photo-sticker sticker-heart">♡</span>
+              </div>
+              <div class="memory-meta"><span>01</span><span>little surprise</span></div>
+              <div class="memory-caption">May love soften our edges, deepen our understanding, and shape the future we
+                envision together ♡</div>
+            </article>
+
+            <article class="memory-card offset-right">
+              <div class="photo-frame">
+                <img src="images/memories/memory-02.jpeg" alt="A happy little moment together" loading="lazy">
+                <span class="photo-sticker sticker-sparkle">✦</span>
+              </div>
+              <div class="memory-meta"><span>02</span><span>just us</span></div>
+              <div class="memory-caption">အတူတူရှိနေရုံနဲ့ ပျော်စရာဖြစ်သွားတဲ့နေ့လေး ✨</div>
+            </article>
+
+            <article class="memory-card">
+              <div class="photo-frame">
+                <img src="images/memories/memory-01.jpeg" alt="A beautiful day we shared" loading="lazy">
+                <span class="photo-sticker sticker-flower">✿</span>
+              </div>
+              <div class="memory-meta"><span>03</span><span>a beautiful day</span></div>
+              <div class="memory-caption">အမှတ်တရတွေထဲက ချစ်စရာအကောင်းဆုံး surprise လေးတစ်ခု ♡</div>
+            </article>
+
+            <article class="memory-card offset-right">
+              <div class="photo-frame">
+                <img src="images/memories/memory-04.jpeg" alt="A cute selfie together" loading="lazy">
+                <span class="photo-sticker sticker-heart">♥</span>
+              </div>
+              <div class="memory-meta"><span>04</span><span>my favorite face</span></div>
+              <div class="memory-caption">ကိုကို့ဘေးမှာဆို selfie တစ်ပုံက မလောက်ဘူးနော် ♡</div>
+            </article>
+
+            <article class="memory-card">
+              <div class="photo-frame">
+                <img src="images/memories/memory-05.jpeg" alt="A night to remember" loading="lazy">
+                <span class="photo-sticker sticker-moon">☾</span>
+              </div>
+              <div class="memory-meta"><span>05</span><span>one lovely night</span></div>
+              <div class="memory-caption">ညလေးတစ်ညပေမယ့် မှတ်ဉာဏ်ထဲမှာတော့ အကြာကြီးနေမယ့်အမှတ်တရ 🌙</div>
+            </article>
+
+            <article class="memory-card offset-right">
+              <div class="photo-frame">
+                <img src="images/memories/memory-06.jpeg" alt="A favorite little selfie" loading="lazy">
+                <span class="photo-sticker sticker-sparkle">♡</span>
+              </div>
+              <div class="memory-meta"><span>06</span><span>still my favorite</span></div>
+              <div class="memory-caption">ဒီလိုပုံလေးတွေ များများရိုက်ပြီး နောက်နှစ်တွေထိ သိမ်းထားကြမယ်နော် 💕</div>
+            </article>
+          </div>
+          <button class="dark-btn" data-back="gift">ပြန်သွားမယ်</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
